@@ -13,12 +13,15 @@ function acronate( acronym, keywords ){
         acronymLetters.push(AcronymLetter(acronym.charAt(i), ['hello']))
     }
 
+
     $.ajax({
-        url: '',
+        url: 'http://words.bighugelabs.com/api/2/ff854eb1f0151b1a2d15940fdb5cb1b5/word/json',
         data: keywords[0],
         method: 'POST',
+        dataType:'jsonp',
         success: function(response) {
-            console.log(response);
+        	console.log('AJ');
+            console.log(response.noun.syn[0]);
             //use data here.
         }
     });

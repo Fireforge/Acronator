@@ -18,6 +18,7 @@ app.controller('ctrl', function($http) {
   }
 
   var URL = 'http://acronator.azurewebsites.net/api/test';
+  var URL2 = 'http://words.bighugelabs.com/api/2/ff854eb1f0151b1a2d15940fdb5cb1b5/word/json';
 
   ctrl.sendObject = function() {
     if(!(ctrl.input&&ctrl.input.acronym&&ctrl.input.des)) {
@@ -37,7 +38,7 @@ app.controller('ctrl', function($http) {
 
       $http.post(URL, acronymObject).success(function(data) {
         //TEST
-
+        console.log(data);
 
         ctrl.acronyms = acronate(acronymObject.acronym, acronymObject.description);
 
