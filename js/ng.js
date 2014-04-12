@@ -20,22 +20,29 @@ app.controller('ctrl', function($http) {
   var URL = 'http://acronator.azurewebsites.net/api/test';
 
   ctrl.sendObject = function() {
-    var target = document.getElementById('spinner');
-    var spinner = new Spinner().spin(target);
-
-    var acronym = ctrl.input.acronym;
-    var description = ctrl.input.des;
-    if(!(acronym&&description)) {
+    if(!(ctrl.input&&ctrl.input.acronym&&ctrl.input.des)) {
       console.log('NO acronym or description');
     }
     else {
-      var acronymObject = {'acronym': acronym, 'description': description}
+      var target = document.getElementById('spinner');
+      var spinner = new Spinner().spin(target);
+      var acronymObject = {'acronym': ctrl.input.acronym, 'description': ctrl.input.des}
+      ctrl.input.acronym = '';
+      ctrl.input.des = '';
       console.log(acronymObject);
       $http.post(URL, acronymObject).success(function(data) {
+        var datas = [];
+        datas.push(data);
+        datas.push('United States of America');
+        datas.push('Lehigh University');
+        //datas.push('Yo So Co Oa Oso Sooc Soo');
         spinner.stop();
-        console.log(data)
-        var tokens = data.split(" ");
-        ctrl.acronyms.push(tokens);
+
+        for(var i = 0; i<datas.length; i++) {
+          var tokens = datas[i].replace('"', '').split(" ");
+          console.log(tokens);
+          ctrl.acronyms.push(tokens);
+        }
       }).error(function(){
         console.log('ERROR');
       });

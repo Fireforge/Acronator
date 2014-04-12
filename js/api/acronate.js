@@ -19,23 +19,6 @@ function acronate( acronym, keywords ){
     }
     return [firstAcronym.join(" ")];
 }
-/*
-	Create an empty list of PossibleWords associated with each letter in acronym
-    
-	
-    for (keyword in keywords):
-		if the word can be used in the acronym:
-			put it in the appropriate list with priority 0
-		get a list of single word synonyms of the keyword
-		for each synonym:
-			if the synonym can be used in the acronym:
-				put it in the appropriate list with priority 1
-		for each filler word:
-			if it can be used:
-				include w/ priority 2
-
-Return all combinations of PossibleWords between lists which minimize total priority
-*/
 			
 function AcronymLetter(letter, words) {
     this.letter = letter;
@@ -47,4 +30,3 @@ function AcronymLetter(letter, words) {
     
     return this;
 }
-    
