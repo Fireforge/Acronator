@@ -6,7 +6,7 @@ app.config(function($httpProvider){
 
 app.controller('ctrl', function($http) {
   var ctrl = this;
-  ctrl.acronyms = ['Yo mama', 'Yo papa', 'Yo Yo'];
+  ctrl.acronyms = [];
   ctrl.shout = function() {
       console.log(ctrl.input.des);
   }
@@ -14,5 +14,24 @@ app.controller('ctrl', function($http) {
   ctrl.acronize = function() {
     ctrl.acronyms.push(ctrl.input.acronym);
     ctrl.input.acronym='';
+    ctrl.input.des='';
+  }
+
+  var URL = '/foo';
+  ctrl.sendObject = function() {
+    var acronym = ctrl.input.acronym;
+    var description = ctrl.input.des;
+    if(!(acronym&&description)) {
+      console.log('NO acronym or description');
+    }
+    else {
+      var acronymObject = {'acronym': acronym, 'description': description}
+      console.log(acronymObject);
+      $http.post(URL, acronymObject).success(function() {
+        console.log('SUCCESS');
+      }).error(function(){
+        console.log('ERROR');
+      });
+    }
   }
 });
