@@ -1,14 +1,9 @@
 var express = require('express');
 var app = express();
 
-app.configure(function(){
-    app.use(
-        '/',
-        express.static(__dirname)
-        );
-    app.use(express.static('/data'));
-    app.use(express.static('/bower_components'));
-});
+app.use('/', express.static(__dirname));
+app.use(express.static('/data'));
+app.use(express.static('/bower_components'));
 
 var port = Number(process.env.PORT || 3000);
 app.listen(port, function() {
