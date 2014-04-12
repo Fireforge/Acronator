@@ -1,0 +1,4 @@
+Acronator
+=========
+
+The Acronym Generator
