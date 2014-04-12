@@ -5,8 +5,23 @@
 * Time: 01:45 PM
 * To change this template use Tools | Templates.
 */
-function acronate( acronym, keywords )
+function acronate( acronym, keywords ){
+    var acronymLetters = [];
+    for ( var i = 0; i < acronym.length; i++ )
+    {
+        acronymLetters.push(AcronymLetter(acronym.charAt(i), ['hello'])) 
+    }
+    
+    var firstAcronym = [];
+    for (l in acronymLetters){
+        firstAcronym.push(l.words[0]);
+        //possibleAcronyms.push(l.join(" "))
+    }
+    return [firstAcronym.join(" ")];
+}
+/*
 	Create an empty list of PossibleWords associated with each letter in acronym
+    
 	
     for (keyword in keywords):
 		if the word can be used in the acronym:
@@ -20,8 +35,16 @@ function acronate( acronym, keywords )
 				include w/ priority 2
 
 Return all combinations of PossibleWords between lists which minimize total priority
+*/
 			
-class PossibleWord
-	word
-	priority
-	source_keyword
+function AcronymLetter(letter, words) {
+    this.letter = letter;
+	this.words = words;
+    
+    this.checkword = function(word){
+        return word.charAt(0) == this.letter;
+    }
+    
+    return this;
+}
+    
