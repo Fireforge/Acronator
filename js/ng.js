@@ -30,7 +30,6 @@ app.controller('ctrl', function($http) {
       console.log(acronymObject);
       $http.post(URL, acronymObject).success(function(data) {
         ctrl.acronyms.push(data);
-        //ctrl.acronyms = data.strings;
       }).error(function(){
         console.log('ERROR');
       });
