@@ -24,8 +24,11 @@ app.controller('ctrl', function($http) {
       console.log('NO acronym or description');
     }
     else {
+      //start spinner
       var target = document.getElementById('spinner');
       var spinner = new Spinner().spin(target);
+
+      //create object from input fields
       var acronymObject = {'acronym': ctrl.input.acronym, 'description': ctrl.input.des}
       ctrl.input.acronym = '';
       ctrl.input.des = '';
@@ -35,7 +38,8 @@ app.controller('ctrl', function($http) {
         datas.push(data);
         datas.push('United States of America');
         datas.push('Lehigh University');
-        //datas.push('Yo So Co Oa Oso Sooc Soo');
+
+        //stop spinner
         spinner.stop();
 
         for(var i = 0; i<datas.length; i++) {
