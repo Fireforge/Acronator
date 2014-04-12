@@ -12,6 +12,17 @@ function acronate( acronym, keywords ){
         acronymLetters.push(AcronymLetter(acronym.charAt(i), ['hello'])) 
     }
     
+    $.ajax({
+        url: '',
+        data: keywords[0],
+        method: 'POST',
+        success: function(response) {
+            console.log(response);
+            //use data here.
+        }   
+    });
+    
+    
     var firstAcronym = [];
     for (l in acronymLetters){
         firstAcronym.push(l.words[0]);
