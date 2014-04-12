@@ -71,14 +71,6 @@
 
             <div class="row">
                     <div class="col-lg-9">
-                        <ul>
-                            <li ng-repeat="acronym in ctrl.acronyms"> {{acronym}}</li>
-                        </ul>
-                    </div>
-            </div>
-
-            <div class="row">
-                    <div class="col-lg-9">
                         <table class="table table-striped">
                             <tr ng-repeat="line in ctrl.acronyms">
                                 <td ng-repeat="tokens in line">{{tokens}}</td>

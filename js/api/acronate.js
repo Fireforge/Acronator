@@ -5,9 +5,11 @@
 * Time: 01:45 PM
 * To change this template use Tools | Templates.
 */
+
+/*
 function acronate( acronym, keywords )
 	Create an empty list of PossibleWords associated with each letter in acronym
-	
+
     for (keyword in keywords):
 		if the word can be used in the acronym:
 			put it in the appropriate list with priority 0
@@ -20,8 +22,14 @@ function acronate( acronym, keywords )
 				include w/ priority 2
 
 Return all combinations of PossibleWords between lists which minimize total priority
-			
+
 class PossibleWord
 	word
 	priority
 	source_keyword
+*/
+
+function acronate() {
+
+}
+
