@@ -1,0 +1,21 @@
+{
+  "name": "acronator",
+  "version": "0.0.0",
+  "description": "make name from acronym",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:acronator.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "exfoxz",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.0.0"
+  }
+}

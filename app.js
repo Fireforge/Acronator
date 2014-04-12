@@ -10,5 +10,7 @@ app.configure(function(){
     app.use(express.static('/bower_components'));
 });
 
-app.listen(3000);
-console.log('Listening to port 3000...');
+var port = Number(process.env.PORT || 3000);
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
