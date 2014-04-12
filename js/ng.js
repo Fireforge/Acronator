@@ -20,6 +20,9 @@ app.controller('ctrl', function($http) {
   var URL = 'http://acronator.azurewebsites.net/api/test';
 
   ctrl.sendObject = function() {
+    var target = document.getElementById('spinner');
+    var spinner = new Spinner().spin(target);
+
     var acronym = ctrl.input.acronym;
     var description = ctrl.input.des;
     if(!(acronym&&description)) {
@@ -29,7 +32,10 @@ app.controller('ctrl', function($http) {
       var acronymObject = {'acronym': acronym, 'description': description}
       console.log(acronymObject);
       $http.post(URL, acronymObject).success(function(data) {
-        ctrl.acronyms.push(data);
+        spinner.stop();
+        console.log(data)
+        var tokens = data.split(" ");
+        ctrl.acronyms.push(tokens);
       }).error(function(){
         console.log('ERROR');
       });

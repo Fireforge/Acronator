@@ -80,12 +80,22 @@
             <div class="row">
                     <div class="col-lg-9">
                         <table class="table table-striped">
-                            <tr ng-repeat="acronym in ctrl.acronyms"></tr>
+                            <tr ng-repeat="line in ctrl.acronyms">
+                                <td ng-repeat="tokens in line">{{tokens}}</td>
+                            </tr>
                         </table>
                     </div>
             </div>
 
             <div class="row">
+                <div class="col-lg-2">
+
+                    <div id='spinner'>
+
+                    </div>
+
+                </div>
+
                 <div class="col-lg-4">
                     <button class="btn btn-lg btn-success in" ng-click="ctrl.sendObject()">Send</button>
                 </div>
@@ -97,7 +107,7 @@
                 <p class="navbar-text"> Acronator </p>
             </div>
         </div>
-
+        <script src="js/spin.min.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/ng.js"></script>
     </body>
