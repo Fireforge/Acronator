@@ -18,6 +18,7 @@ app.controller('ctrl', function($http) {
   }
 
   var URL = '/foo';
+
   ctrl.sendObject = function() {
     var acronym = ctrl.input.acronym;
     var description = ctrl.input.des;
@@ -27,8 +28,8 @@ app.controller('ctrl', function($http) {
     else {
       var acronymObject = {'acronym': acronym, 'description': description}
       console.log(acronymObject);
-      $http.post(URL, acronymObject).success(function() {
-        console.log('SUCCESS');
+      $http.post(URL, acronymObject).success(function(data) {
+         ctrl.acronyms = data.strings;
       }).error(function(){
         console.log('ERROR');
       });
