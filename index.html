@@ -58,19 +58,23 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-9" >
+                <div class="col-xs-8" >
                     <input type="text" ng-model="ctrl.input.acronym" class="form-control in" placeholder="acronym"></input>
+                </div>
+
+                <div class="col-xs-4">
+                    <button class="btn btn-success in" ng-click="ctrl.sendObject()">{{ctrl.button.name}}</button>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-lg-9" >
+                <div class="col-xs-8" >
                     <input type="text" ng-model="ctrl.input.des" class="form-control in" placeholder="description"></input>
                 </div>
             </div>
 
             <div class="row">
-                    <div class="col-lg-9">
+                    <div class="col-xs-8">
                         <table class="table table-striped">
                             <tr ng-repeat="line in ctrl.acronyms">
                                 <td ng-repeat="tokens in line track by $index">{{tokens}}</td>
@@ -88,9 +92,7 @@
 
                 </div>
 
-                <div class="col-lg-4">
-                    <button class="btn btn-lg btn-success in" ng-click="ctrl.sendObject()">Send</button>
-                </div>
+
             </div>
 
 

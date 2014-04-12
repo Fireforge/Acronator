@@ -7,22 +7,16 @@ app.config(function($httpProvider){
 
 app.controller('ctrl', function($http) {
   var ctrl = this;
-  ctrl.acronyms = [];
-  ctrl.shout = function() {
-      console.log(ctrl.input.des);
-  }
 
-  ctrl.acronize = function() {
-    ctrl.acronyms.push(ctrl.input.acronym);
-    ctrl.input.acronym='';
-    ctrl.input.des='';
-  }
+  ctrl.button = {};
+  ctrl.button.name = 'Send';
+  ctrl.acronyms = [];
 
   ctrl.parse = function(object) {
     console.log(object);
     return JSON.parse(object);
   }
-
+  var word = 'green';
   var URL2 = 'http://words.bighugelabs.com/api/2/ff854eb1f0151b1a2d15940fdb5cb1b5/'
   + word
   + '/json'
@@ -33,14 +27,17 @@ app.controller('ctrl', function($http) {
       console.log('NO acronym or description');
     }
     else {
+      //change button name
+      ctrl.button.name = 'Redo';
+
       //start spinner
       var target = document.getElementById('spinner');
       var spinner = new Spinner().spin(target);
 
       //create object from input fields
       var acronymObject = {'acronym': ctrl.input.acronym, 'description': ctrl.input.des}
-      ctrl.input.acronym = '';
-      ctrl.input.des = '';
+      //ctrl.input.acronym = '';
+      //ctrl.input.des = '';
 
       ctrl.acronyms = acronate(acronymObject.acronym, acronymObject.description);
 
