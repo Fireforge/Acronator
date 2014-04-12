@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Acronator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/angular.min.js"></script>
+    </head>
+
+    <body ng-app="app">
+
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand"> Acronator </a>
+
+                    <button class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navHeaderCollapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse navHeaderCollapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Intro</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">APIs <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Get</a></li>
+                                <li><a href="#">Post</a></li>
+                                <li><a href="#">Upload</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+
+                 </div>
+            </div>
+        </div>
+
+        <div class="container" ng-controller='ctrl as ctrl'>
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <h1>Acronator - de-acronize your acronyms</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9" >
+                    <input type="text" ng-model="ctrl.input.acronym" class="form-control in" placeholder="acronym"></input>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9" >
+                    <input type="text" ng-model="ctrl.input.des" class="form-control in" placeholder="description"></input>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-lg-9">
+                        <ul>
+                            <li ng-repeat="acronym in ctrl.acronyms"> {{acronym}}</li>
+                        </ul>
+                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <button class="btn btn-lg btn-success in" ng-click="ctrl.acronize()">Send</button>
+                </div>
+            </div>
+
+
+        <div class="navbar  navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text"> Acronator </p>
+            </div>
+        </div>
+
+        <script src="js/bootstrap.js"></script>
+        <script src="js/ng.js"></script>
+    </body>
+</html>

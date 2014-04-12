@@ -1,0 +1,17 @@
+.sidebar {
+}
+#three{
+    background-color: blue;
+}
+
+.scene{
+    border: solid 1px;
+}
+
+.object {
+    margin: 5px;
+}
+
+.in {
+    margin: 10px;
+}
