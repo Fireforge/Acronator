@@ -17,7 +17,7 @@ app.controller('ctrl', function($http) {
     ctrl.input.des='';
   }
 
-  var URL = '/foo';
+  var URL = 'http://acronator.azurewebsites.net/api/test';
 
   ctrl.sendObject = function() {
     var acronym = ctrl.input.acronym;
@@ -29,7 +29,8 @@ app.controller('ctrl', function($http) {
       var acronymObject = {'acronym': acronym, 'description': description}
       console.log(acronymObject);
       $http.post(URL, acronymObject).success(function(data) {
-         ctrl.acronyms = data.strings;
+        ctrl.acronyms.push(data);
+        //ctrl.acronyms = data.strings;
       }).error(function(){
         console.log('ERROR');
       });
