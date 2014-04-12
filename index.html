@@ -73,7 +73,7 @@
                     <div class="col-lg-9">
                         <table class="table table-striped">
                             <tr ng-repeat="line in ctrl.acronyms">
-                                <td ng-repeat="tokens in line">{{tokens}}</td>
+                                <td ng-repeat="tokens in line track by $index">{{tokens}}</td>
                             </tr>
                         </table>
                     </div>
@@ -102,5 +102,6 @@
         <script src="js/spin.min.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/ng.js"></script>
+        <script src="js/api/acronate.js"></script
     </body>
 </html>

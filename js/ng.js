@@ -32,21 +32,26 @@ app.controller('ctrl', function($http) {
       var acronymObject = {'acronym': ctrl.input.acronym, 'description': ctrl.input.des}
       ctrl.input.acronym = '';
       ctrl.input.des = '';
+      console.log(acronate(acronymObject.acronym, acronymObject.description));
       console.log(acronymObject);
+
       $http.post(URL, acronymObject).success(function(data) {
-        var datas = [];
-        datas.push(data);
-        datas.push('United States of America');
-        datas.push('Lehigh University');
+        //TEST
+
+
+        ctrl.acronyms = acronate(acronymObject.acronym, acronymObject.description);
 
         //stop spinner
         spinner.stop();
 
+        /*
         for(var i = 0; i<datas.length; i++) {
           var tokens = datas[i].replace('"', '').split(" ");
           console.log(tokens);
           ctrl.acronyms.push(tokens);
         }
+        */
+
       }).error(function(){
         console.log('ERROR');
       });
