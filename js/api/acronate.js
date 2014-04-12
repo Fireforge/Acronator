@@ -25,8 +25,8 @@ function acronate( acronym, keywords ){
     for (var j = 0; j < keywordsArray.length; j++){
         ajaxReqs.push($.ajax({
             url: 'https://words.bighugelabs.com/api/2/ff854eb1f0151b1a2d15940fdb5cb1b5/' + keywordsArray[j] + '/json',
-            dataType:'jsonp',
-            //async: 'false',
+            dataType: 'jsonp',
+            async: false,
             success: function(response) {
                 for (syntype in response){
                     console.log(response[syntype].syn);
@@ -37,13 +37,13 @@ function acronate( acronym, keywords ){
     }
     //console.log(ajaxReqs);
     // when all AJAX requests are complete
-    $.when.apply($, ajaxReqs).then(function() {
+    var deacronizations = [];
+    var test = $.when.apply($, ajaxReqs).then(function() {
         //console.log(wordBank);
 
         // Sort all words in word bank with their matching acronym letters
         for (var j = 0; j < acronymLetters.length; j++){
             for (word in wordBank){
-                console.log(word);
                 if (acronymLetters[j].checkword(acronymLetters[j], wordBank[word])){
                     acronymLetters[j].words.push(wordBank[word]);
                     //possibleAcronym.push(wordBank[word]);
@@ -52,7 +52,6 @@ function acronate( acronym, keywords ){
         }
         
         // Now that we've sorted the synonyms, figure out some de-acronizations
-        var deacronizations = [];
         for (var i = 0; i < 5; i++){ //hardcoded to 5 deacros for now
             var deacro = []
             for (var j = 0; j < acronymLetters.length; j++){
@@ -63,9 +62,10 @@ function acronate( acronym, keywords ){
             deacronizations.push(deacro)
         }
         console.log(deacronizations);
-        console.log("<<<acronate")
-        return deacronizations;
     });
+    console.log(test);
+    console.log("<<<acronate")
+    console.log(test.done());
 }
 
 function AcronymLetter(letter, words) {
