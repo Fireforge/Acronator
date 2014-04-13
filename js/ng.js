@@ -61,40 +61,66 @@ app.controller('ctrl', function($scope, $http, $timeout) {
           });
   }
 
-  /*
-  $scope.$watch('input', function(newInput, oldInput, scope) {
-    ctrl.output.name = newInput.acronym;
-    console.log(oldInput);
-  }, true);
-  */
   ctrl.spaced = false;
   ctrl.preSpaced = false;
+
   //detect Space Key
+  /*
   ctrl.onKeyPress = function(e) {
-    ctrl.prespaced = ctrl.spaced;
-    console.log('PRE ' + ctrl.prespaced);
-    ctrl.spaced = (e.charCode == 32);
-    console.log('NOW ' + ctrl.spaced);
+    console.log('pressed');
+    $timeout(function(){console.log('yes')}, 1000);
+  }
+  */
+  ctrl.wait = 900;
+
+
+
+  ctrl.changeKeyWords = function () {
+    ctrl.pressed();
   }
 
-  ctrl.typing = true;
-  ctrl.temp = 0;
-  ctrl.limit = 3;
-  ctrl.change = function () {
-    console.log('changed');
-    /*
-    for(var i = 0; i<ctrl.input.des;i++) {
-      if(ctrl.input)
-    }
-  */
-    if(ctrl.spaced)
-      ctrl.sendObject();
+  /*
+  ctrl.pressed = function() {
+    ctrl.lastKeyPressed = ctrl.keyPressed;
+    ctrl.keyPressed = (new Date()).getMilliseconds();
+    $timeout(function(){
+      console.log('done waiting, checking key...');
+      ctrl.checkKey(ctrl.lastKeyPressed);
+    }, ctrl.wait);
+  };
+
+  ctrl.checkKey = function(time) {
+    console.log(time);
+    console.log(ctrl.keyPressed);
+    if(time==ctrl.keyPressed)
+      console.log('SendingX...');
+      //ctrl.sendObject();
   }
+  */
+
+  ctrl.pressed = function() {
+    var lastKeyWords = ctrl.input.des;
+    $timeout(function(){
+      console.log(lastKeyWords);
+      ctrl.check(lastKeyWords);
+    }, ctrl.wait);
+  }
+
+  ctrl.check = function(last) {
+    if(last === ctrl.input.des) {
+      console.log('Sending...');
+      ctrl.sendObject();
+    }
+    else
+      console.log('Changed!');
+  }
+
   ctrl.sendObject = function() {
     if(!(ctrl.input&&ctrl.input.acronym&&ctrl.input.des)) {
       console.log('NO acronym or description');
     }
     else {
+      console.log('Calling server...');
       //change button name
       ctrl.button.name = 'Redo';
       //start spinner
