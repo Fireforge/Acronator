@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-lg-9">
                     <h1>Acronator</h1>
-                    
+
                     <h2>de-acronize your acronyms<h2>
 
                 </div>
@@ -52,13 +52,13 @@
 
             <div class="row">
                 <div class="col-xs-9" >
-                    <input type="text" ng-model="ctrl.input.acronym" ng-keypress="ctrl.onKeyPress($event)" ng-change="ctrl.change()" class="form-control in" placeholder="acronym"></input>
+                    <input type="text" ng-model="ctrl.input.acronym" ng-change="ctrl.changeAcronym()" class="form-control in" placeholder="acronym"></input>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-9" >
-                    <input type="text" ng-model="ctrl.input.des" ng-change="ctrl.pressed()" ng-keypress="ctrl.onKeyPress($event)" class="form-control in" placeholder="keywords"></input>
+                    <input type="text" ng-model="ctrl.input.des" ng-change="ctrl.changeKeyWords()" class="form-control in" placeholder="keywords"></input>
                 </div>
 
                 <div class="col-xs-2">

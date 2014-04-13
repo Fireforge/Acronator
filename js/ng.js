@@ -74,9 +74,13 @@ app.controller('ctrl', function($scope, $http, $timeout) {
   ctrl.wait = 900;
 
 
-
+  ctrl.changeAcronym = function() {
+    console.log('change acronym');
+    ctrl.pressedAcronym(ctrl.input.acronym);
+  }
   ctrl.changeKeyWords = function () {
-    ctrl.pressed();
+    console.log('change keyword')
+    ctrl.pressedKeyword(ctrl.input.des);
   }
 
   /*
@@ -97,16 +101,32 @@ app.controller('ctrl', function($scope, $http, $timeout) {
       //ctrl.sendObject();
   }
   */
-
-  ctrl.pressed = function() {
-    var lastKeyWords = ctrl.input.des;
+  ctrl.pressedAcronym = function() {
+    var lastAcronym = ctrl.input.acronym;
     $timeout(function(){
-      console.log(lastKeyWords);
-      ctrl.check(lastKeyWords);
+      console.log(lastAcronym);
+      ctrl.checkAcronym(lastAcronym);
     }, ctrl.wait);
   }
 
-  ctrl.check = function(last) {
+  ctrl.checkAcronym = function(last) {
+    if(last === ctrl.input.acronym) {
+      console.log('Sending...');
+      ctrl.sendObject();
+    }
+    else
+      console.log('Changed!');
+  }
+
+  ctrl.pressedKeyword = function() {
+    var lastKeyWords = ctrl.input.des;
+    $timeout(function(){
+      console.log(lastKeyWords);
+      ctrl.checkKeyword(lastKeyWords);
+    }, ctrl.wait);
+  }
+
+  ctrl.checkKeyword = function(last) {
     if(last === ctrl.input.des) {
       console.log('Sending...');
       ctrl.sendObject();
