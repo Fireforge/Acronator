@@ -73,8 +73,13 @@ app.controller('ctrl', function($scope, $http, $timeout) {
   */
   ctrl.wait = 900;
 
-
   ctrl.changeAcronym = function() {
+    if(ctrl.input.acronym) {
+      console.log('change header');
+      ctrl.header = ctrl.input.acronym.toUpperCase().split('');
+      //$scope.$apply();
+      console.log(ctrl.header);
+    }
     console.log('change acronym');
     ctrl.pressedAcronym(ctrl.input.acronym);
   }

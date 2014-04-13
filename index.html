@@ -69,9 +69,11 @@
             </div>
 
             <div class="row">
-
                     <div class="col-xs-8">
                         <table class="table table-striped">
+                            <tr ng-show='ctrl.header'>
+                                <td style="font-weight:bold; color:red" ng-repeat="letter in ctrl.header track by $index">{{letter}}</td>
+                            </tr>
                             <tr ng-repeat="line in ctrl.acronyms">
                                 <td ng-repeat="tokens in line track by $index">{{tokens}}</td>
                             </tr>
