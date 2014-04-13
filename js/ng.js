@@ -5,12 +5,13 @@ app.config(function($httpProvider){
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
-app.controller('ctrl', function($scope, $http) {
+app.controller('ctrl', function($scope, $http, $timeout) {
   var ctrl = this;
 
   ctrl.button = {};
   ctrl.button.name = 'Send';
   ctrl.acronyms = [];
+  ctrl.counter = 0;
 
   $scope.input = {
     acronym: '',
@@ -24,7 +25,6 @@ app.controller('ctrl', function($scope, $http) {
     console.log(object);
     return JSON.parse(object);
   }
-  var word = 'green';
 
   ctrl.http = function() {
     var postData = {
@@ -67,11 +67,28 @@ app.controller('ctrl', function($scope, $http) {
     console.log(oldInput);
   }, true);
   */
+  ctrl.spaced = false;
+  ctrl.preSpaced = false;
+  //detect Space Key
+  ctrl.onKeyPress = function(e) {
+    ctrl.prespaced = ctrl.spaced;
+    console.log('PRE ' + ctrl.prespaced);
+    ctrl.spaced = (e.charCode == 32);
+    console.log('NOW ' + ctrl.spaced);
+  }
 
+  ctrl.typing = true;
+  ctrl.temp = 0;
+  ctrl.limit = 3;
   ctrl.change = function () {
-    //console.log(ctrl.input);
-    ctrl.sendObject();
-    //ctrl.http();
+    console.log('changed');
+    /*
+    for(var i = 0; i<ctrl.input.des;i++) {
+      if(ctrl.input)
+    }
+  */
+    if(ctrl.spaced)
+      ctrl.sendObject();
   }
   ctrl.sendObject = function() {
     if(!(ctrl.input&&ctrl.input.acronym&&ctrl.input.des)) {
