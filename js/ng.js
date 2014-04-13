@@ -5,12 +5,13 @@ app.config(function($httpProvider){
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
-app.controller('ctrl', function($scope, $http) {
+app.controller('ctrl', function($scope, $http, $timeout) {
   var ctrl = this;
 
   ctrl.button = {};
   ctrl.button.name = 'Send';
   ctrl.acronyms = [];
+  ctrl.counter = 0;
 
   $scope.input = {
     acronym: '',
@@ -24,7 +25,6 @@ app.controller('ctrl', function($scope, $http) {
     console.log(object);
     return JSON.parse(object);
   }
-  var word = 'green';
 
   ctrl.http = function() {
     var postData = {
@@ -61,23 +61,66 @@ app.controller('ctrl', function($scope, $http) {
           });
   }
 
+  ctrl.spaced = false;
+  ctrl.preSpaced = false;
+
+  //detect Space Key
   /*
-  $scope.$watch('input', function(newInput, oldInput, scope) {
-    ctrl.output.name = newInput.acronym;
-    console.log(oldInput);
-  }, true);
+  ctrl.onKeyPress = function(e) {
+    console.log('pressed');
+    $timeout(function(){console.log('yes')}, 1000);
+  }
+  */
+  ctrl.wait = 900;
+
+
+
+  ctrl.changeKeyWords = function () {
+    ctrl.pressed();
+  }
+
+  /*
+  ctrl.pressed = function() {
+    ctrl.lastKeyPressed = ctrl.keyPressed;
+    ctrl.keyPressed = (new Date()).getMilliseconds();
+    $timeout(function(){
+      console.log('done waiting, checking key...');
+      ctrl.checkKey(ctrl.lastKeyPressed);
+    }, ctrl.wait);
+  };
+
+  ctrl.checkKey = function(time) {
+    console.log(time);
+    console.log(ctrl.keyPressed);
+    if(time==ctrl.keyPressed)
+      console.log('SendingX...');
+      //ctrl.sendObject();
+  }
   */
 
-  ctrl.change = function () {
-    //console.log(ctrl.input);
-    ctrl.sendObject();
-    //ctrl.http();
+  ctrl.pressed = function() {
+    var lastKeyWords = ctrl.input.des;
+    $timeout(function(){
+      console.log(lastKeyWords);
+      ctrl.check(lastKeyWords);
+    }, ctrl.wait);
   }
+
+  ctrl.check = function(last) {
+    if(last === ctrl.input.des) {
+      console.log('Sending...');
+      ctrl.sendObject();
+    }
+    else
+      console.log('Changed!');
+  }
+
   ctrl.sendObject = function() {
     if(!(ctrl.input&&ctrl.input.acronym&&ctrl.input.des)) {
       console.log('NO acronym or description');
     }
     else {
+      console.log('Calling server...');
       //change button name
       ctrl.button.name = 'Redo';
       //start spinner

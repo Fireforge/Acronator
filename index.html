@@ -33,17 +33,6 @@
                     <ul class="nav navbar-nav navbar-right">
 
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Intro</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">APIs <b class="caret"></b></a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Get</a></li>
-                                <li><a href="#">Post</a></li>
-                                <li><a href="#">Upload</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">About</a></li>
                     </ul>
 
                  </div>
@@ -57,19 +46,19 @@
                     <h1>Acronator</h1>
                     
                     <h2>de-acronize your acronyms<h2>
+
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-xs-8" >
-                    <input type="text" ng-model="ctrl.input.acronym" ng-change="ctrl.change()" class="form-control in" placeholder="acronym"></input>
+                <div class="col-xs-9" >
+                    <input type="text" ng-model="ctrl.input.acronym" ng-keypress="ctrl.onKeyPress($event)" ng-change="ctrl.change()" class="form-control in" placeholder="acronym"></input>
                 </div>
-
             </div>
 
             <div class="row">
-                <div class="col-xs-8" >
-                    <input type="text" ng-model="ctrl.input.des" ng-change="ctrl.change()" class="form-control in" placeholder="keywords"></input>
+                <div class="col-xs-9" >
+                    <input type="text" ng-model="ctrl.input.des" ng-change="ctrl.pressed()" ng-keypress="ctrl.onKeyPress($event)" class="form-control in" placeholder="keywords"></input>
                 </div>
 
                 <div class="col-xs-2">
