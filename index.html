@@ -59,21 +59,25 @@
 
             <div class="row">
                 <div class="col-xs-8" >
-                    <input type="text" ng-model="ctrl.input.acronym" class="form-control in" placeholder="acronym"></input>
+                    <input type="text" ng-model="ctrl.input.acronym" ng-change="ctrl.change()" class="form-control in" placeholder="acronym"></input>
                 </div>
 
-                <div class="col-xs-4">
-                    <button class="btn btn-success in" ng-click="ctrl.sendObject()">{{ctrl.button.name}}</button>
-                </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-8" >
-                    <input type="text" ng-model="ctrl.input.des" class="form-control in" placeholder="description"></input>
+                    <input type="text" ng-model="ctrl.input.des" ng-change="ctrl.change()" class="form-control in" placeholder="keywords"></input>
+                </div>
+
+                <div class="col-xs-2">
+
+                    <div id='spinner'></div>
+
                 </div>
             </div>
 
             <div class="row">
+
                     <div class="col-xs-8">
                         <table class="table table-striped">
                             <tr ng-repeat="line in ctrl.acronyms">
@@ -83,17 +87,6 @@
                     </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-2">
-
-                    <div id='spinner'>
-
-                    </div>
-
-                </div>
-
-
-            </div>
 
 
         <div class="navbar  navbar-default navbar-fixed-bottom">
